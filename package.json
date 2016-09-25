@@ -1,0 +1,15 @@
+{
+  "name": "yds",
+  "version": "1.0.0",
+  "description": "yds",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "rs.bhagat@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^4.6.1",
+    "mysql": "github:mysqljs/mysql"
+  }
+}
