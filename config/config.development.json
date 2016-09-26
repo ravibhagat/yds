@@ -1,0 +1,6 @@
+{
+  "host": "localhost",
+  "port": 3000,
+  "dbUrl": "mongodb://localhost/yds",
+  "dbPort": "27017"
+}
