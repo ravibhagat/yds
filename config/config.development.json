@@ -2,5 +2,8 @@
   "host": "localhost",
   "port": 3000,
   "dbUrl": "mongodb://localhost/yds",
-  "dbPort": "27017"
+  "dbPort": "27017",
+  "user": "root",
+  "sqlPassword": "bhagat2218",
+  "database" : "qasampark"
 }
