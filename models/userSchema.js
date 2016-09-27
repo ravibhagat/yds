@@ -214,7 +214,7 @@ var Business = mongoose.model('Business', businessSchema);
 
 var DonationTypeSchema = new Schema({
     donationName: { type: String, required: true, unique: true },
-    displayName: { type: String, required: true, unique: true },
+    displayName: { type: String, required: true, unique: false },
     createdAt: { type: Date, required: true, default: Date.now },
     createdBy: { type: String, ref: 'Users' },
     updatedAt: { type: Date, default: null },
@@ -222,12 +222,14 @@ var DonationTypeSchema = new Schema({
 });
 var DonationType = mongoose.model('DonationType', DonationTypeSchema);
 
-module.exports = User;
-module.exports = userGroups;
-module.exports = Zones;
-module.exports = Roles;
-module.exports = Country;
-module.exports = State;
-module.exports = Publication;
-module.exports = Business;
-module.exports = DonationType;
+module.exports = {
+ User: User,
+ userGroups: userGroups,
+ Zones: Zones,
+ Roles: Roles,
+ Country: Country,
+ State: State,
+ Publication: Publication,
+ Business: Business,
+ DonationType: DonationType
+};

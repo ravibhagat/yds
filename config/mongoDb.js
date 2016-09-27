@@ -13,5 +13,6 @@ module.exports = {
     },
     disconnect: function() {
         mongoose.connection.close();
+        console.log(' db closed');
     }
 };
