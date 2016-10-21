@@ -7,7 +7,7 @@ var mongoDb = require('../config/mongoDb');
 mongoDb.connect(configs);
 var mysqlDb = require('../config/mysqlDb')(configs);
 
-var abc = function() {
+var zoneImport = function() {
     return importData('zone').then(function(rows) {
         mysqlDb.end();
         var data = [];
@@ -42,4 +42,4 @@ var importData = function(table) {
     });
 };
 
-abc();
+zoneImport();
