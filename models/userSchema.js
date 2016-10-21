@@ -9,12 +9,9 @@ var testEmail = function(value) {
 var emailValidator = [testEmail, '{VALUE} is not a valid email address'];
 
 var UserSchema = new Schema({
-    _id: {
-        type: String,
-        required: true,
-        lowercase: true,
-        validate: emailValidator,
-        maxlength: [50, 'maximum character length (50) exceeded for email address']
+    oldid: {
+        type: Number,
+        required: true
     },
     firstName: { type: String, required: true, maxlength: [50, 'first name maximum 50 character acceptable'] },
     middleName: { type: String, required: false, maxlength: [50, 'first name maximum 50 character acceptable'] },
@@ -131,7 +128,7 @@ var Roles = mongoose.model('Roles', roleSchema);
 var zoneSchema = new Schema({
     _id: { type: String, required: true, unique: true },
     name: { type: String, required: true },
-    desc: { type: String },
+    desc: { type: String, required: false },
     isActive: { type: Boolean, required: true, default: true },
     createdAt: { type: Date, required: true, default: Date.now },
     createdBy: { type: String, ref: 'Users' },
