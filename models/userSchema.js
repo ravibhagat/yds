@@ -50,7 +50,8 @@ var UserSchema = new Schema({
     parentId: { type: Schema.ObjectId, ref: 'User.userSchema' },
     relationship: { type: String, required: false },
     userType: { type: String, enum: ['user', 'manager', 'admin'], required: true },
-    muktType: { type: String, enum: ['grihasta', 'amrish', 'snyashi', 'devotee'], required: true },
+    muktType: { type: String, enum: ['ambrish', 'american', 'angat', 'cricket', 'general', 'karyakarta', 'kid', 'married', 'nisthawaan', 'sahishnu',
+                'sahradayi', 'samanvay', 'sampark', 'sat. sabha', 'single', 'sundaysabha','vip', 'vvip', 'youth'], required: true },
     userGroups: {
         type: [{ type: String, ref: 'userGroup' }],
         default: []
