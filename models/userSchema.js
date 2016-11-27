@@ -96,8 +96,8 @@ var User = mongoose.model('User', UserSchema);
 /* ---------------------------------------------------*/
 
 var groupSchema = new Schema({
-    _id: { type: String, required: true, unique: true },
-    name: { type: String, required: true },
+    //_id: { type: String, required: true, unique: true },
+    name: { type: String, required: true, unique: true},
     desc: { type: String },
     isActive: { type: Boolean, required: true, default: true },
     createdAt: { type: Date, required: true, default: Date.now },
