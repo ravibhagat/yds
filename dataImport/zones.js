@@ -11,7 +11,7 @@ var zoneImport = function() {
     return importData('zone').then(function(rows) {
         mysqlDb.end();
         var data = [];
-        for (var i = 1; i < rows.length; i++) {
+        for (var i = 0; i < rows.length; i++) {
             data.push({
                 _id: rows[i].Z_ID,
                 name: rows[i].Z_Name,
