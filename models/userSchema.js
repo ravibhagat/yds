@@ -21,7 +21,7 @@ var UserSchema = new Schema({
         required: false,
         maxlength: [50, 'maximum character length (50) exceeded for nick name']
     },
-    gender: { type: String, enum: ['male', 'female'], required: true },
+    gender: { type: String, enum: ['male', 'female', 'other'], required: true },
     birthDay: {
         day: { type: String, required: true },
         month: { type: String, required: true },
@@ -154,9 +154,10 @@ var Country = mongoose.model('Country', countrySchema);
 
 /* ---------------------------------------------------*/
 var stateSchema = new Schema({
-    stateCode: { type: String, required: true, unique: false },
     name: { type: String, required: true },
-    countryObjID: { type: Schema.ObjectId, required: true, ref: 'Country' },
+    stateCode: { type: String, required: true, unique: false },
+    zoneObjID: { type: Schema.ObjectId, required: true, ref: 'Zones' },
+    countryObjID: { type: Schema.ObjectId, required: false, ref: 'Country' },
     createdAt: { type: Date, required: true, default: Date.now },
     createdBy: { type: String, ref: 'Users' },
     updatedAt: { type: Date, default: null },
