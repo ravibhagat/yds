@@ -13,7 +13,6 @@ var zoneImport = function() {
         var data = [];
         for (var i = 0; i < rows.length; i++) {
             data.push({
-                _id: rows[i].Z_ID,
                 name: rows[i].Z_Name,
                 createdBy: 'admin@system.com',
                 updatedAt: Date.now()
