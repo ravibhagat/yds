@@ -170,6 +170,7 @@ var State = mongoose.model('State', stateSchema);
 var publicationSchema = new Schema({
     publicationTitle: { type: String, required: true, unique: false },
     description: { type: String, required: true },
+    publicationType: { type: enum: ['AUDIO', 'Email', 'OUTREACH', 'PATRIKA', 'YOGIBAAL'], required: true},
     user: { type: String, required: true, ref: 'User' },
     createdAt: { type: Date, required: true, default: Date.now },
     createdBy: { type: String, ref: 'Users' },
