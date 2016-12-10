@@ -85,6 +85,8 @@ var UserSchema = new Schema({
         call: { type: Boolean, required: true, default: true },
         whatsapp: { type: Boolean, required: true, default: true }
     },
+    primaryManager: { type: Schema.ObjectId, ref: 'User.userSchema' },
+    secondryManager:[{ type: Schema.ObjectId, ref: 'User.userSchema' }],
     createdAt: { type: Date, required: true, default: Date.now },
     updatedAt: { type: Date, default: null }
 });
