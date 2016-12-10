@@ -60,12 +60,13 @@ var UserSchema = new Schema({
         type: [{ type: String, ref: 'Role' }],
         default: []
     },
+    myZone: { type: String, ref: 'Zones' },
     userZones: {
         type: [{ type: String, ref: 'Zones' }],
         default: []
     },
     userRating: { type: Number, required: false },
-    followUp: { type: Number, required: false },
+    mailSubscription: { enum: [ true, false], required: true, default: false },
     salt: { type: String, required: true },
     password: { type: String, required: true },
     isActive: { type: Boolean, required: true, default: true },
