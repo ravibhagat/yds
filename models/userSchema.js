@@ -190,8 +190,8 @@ var businessSchema = new Schema({
     businessName: { type: String, required: true },
     businessOwner: { type: String, required: true, ref: 'User' },
     contactDetails: {
-        email: { type: String, required: true, lowercase: true },
-        mobilePhone: { type: String, required: true },
+        email: { type: String, required: false, lowercase: true },
+        mobilePhone: { type: String, required: false },
         businessPhone: { type: String, required: false },
         fax: { type: String, required: false }
     },
