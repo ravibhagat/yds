@@ -66,7 +66,7 @@ var UserSchema = new Schema({
         default: []
     },
     userRating: { type: Number, required: false },
-    mailSubscription: { enum: [ true, false], required: true, default: false },
+    mailSubscription: { type: Boolean, enum: [ true, false], required: true, default: false },
     salt: { type: String, required: true },
     password: { type: String, required: true },
     isActive: { type: Boolean, required: true, default: true },
@@ -94,7 +94,7 @@ var UserSchema = new Schema({
 UserSchema.index({ 'userID': 1 }, { unique: true });
 UserSchema.index({ 'email': 1 }, { unique: true });
 UserSchema.set('validateBeforeSave', true);
-var User = mongoose.model('User', UserSchema);
+var Users = mongoose.model('User', UserSchema);
 
 /* ---------------------------------------------------*/
 
@@ -173,7 +173,7 @@ var State = mongoose.model('State', stateSchema);
 var publicationSchema = new Schema({
     publicationTitle: { type: String, required: true, unique: false },
     description: { type: String, required: true },
-    publicationType: { type: enum: ['AUDIO', 'Email', 'OUTREACH', 'PATRIKA', 'YOGIBAAL'], required: true},
+    publicationType: { type: String, enum: ['AUDIO', 'Email', 'OUTREACH', 'PATRIKA', 'YOGIBAAL'], required: true},
     user: { type: String, required: true, ref: 'User' },
     createdAt: { type: Date, required: true, default: Date.now },
     createdBy: { type: String, ref: 'Users' },
@@ -225,7 +225,7 @@ var DonationTypeSchema = new Schema({
 var DonationType = mongoose.model('DonationType', DonationTypeSchema);
 
 module.exports = {
- User: User,
+ Users: Users,
  userGroups: userGroups,
  Zones: Zones,
  Roles: Roles,
