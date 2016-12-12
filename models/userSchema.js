@@ -23,8 +23,8 @@ var UserSchema = new Schema({
     },
     gender: { type: String, enum: ['male', 'female', 'other'], required: true },
     birthDay: {
-        day: { type: String, required: true },
-        month: { type: String, required: true },
+        day: { type: String, required: false },
+        month: { type: String, required: false },
         year: { type: String, required: false },
     },
     contactDetails: {
@@ -49,7 +49,7 @@ var UserSchema = new Schema({
     reference: { type: String, required: false },
     parentId: { type: Schema.ObjectId, ref: 'User.userSchema' },
     relationship: { type: String, required: false },
-    userType: { type: String, enum: ['user', 'manager', 'admin'], required: true },
+    userType: { type: String, enum: ['superadmin','admin', 'write', 'read'], required: true, default: 'read' },
     muktType: { type: String, enum: ['ambrish', 'american', 'angat', 'cricket', 'general', 'karyakarta', 'kid', 'married', 'nisthawaan', 'sahishnu',
                 'sahradayi', 'samanvay', 'sampark', 'sat. sabha', 'single', 'sundaysabha','vip', 'vvip', 'youth'], required: true },
     userGroups: {
@@ -67,8 +67,9 @@ var UserSchema = new Schema({
     },
     userRating: { type: Number, required: false },
     mailSubscription: { type: Boolean, enum: [ true, false], required: true, default: false },
-    salt: { type: String, required: true },
-    password: { type: String, required: true },
+    loginId: { type: String, required: false },
+    salt: { type: String, required: false },
+    password: { type: String, required: false },
     isActive: { type: Boolean, required: true, default: true },
     isRegistered: { type: Boolean, required: true, default: false },
     authToken: {
