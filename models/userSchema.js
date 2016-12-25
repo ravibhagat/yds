@@ -51,7 +51,7 @@ var UserSchema = new Schema({
     relationship: { type: String, required: false },
     userType: { type: String, enum: ['superadmin','admin', 'write', 'read'], required: true, default: 'read' },
     muktType: { type: String, enum: ['ambrish', 'american', 'angat', 'cricket', 'general', 'karyakarta', 'kid', 'married', 'nisthawaan', 'sahishnu',
-                'sahradayi', 'samanvay', 'sampark', 'sat. sabha', 'single', 'sundaysabha','vip', 'vvip', 'youth'], required: true },
+                'sahradayi', 'samanvay', 'sampark', 'sat. sabha', 'single', 'sundaysabha','vip', 'vvip', 'youth'], required: false },
     userGroups: {
         type: [{ type: String, ref: 'userGroup' }],
         default: []
