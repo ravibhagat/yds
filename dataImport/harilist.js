@@ -120,9 +120,9 @@ var updateMuktaType = function(row){
             }
             if(res.length > 0)
             {
-                resolve(res)
+                resolve(res);
             }else{
-                resolve([{"MUKTTYPE":'general'}])
+                resolve([{"MUKTTYPE":'general'}]);
             };
         });
     });
