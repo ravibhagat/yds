@@ -50,8 +50,8 @@ var UserSchema = new Schema({
     parentId: { type: Schema.ObjectId, ref: 'User.userSchema' },
     relationship: { type: String, required: false },
     userType: { type: String, enum: ['superadmin','admin', 'write', 'read'], required: true, default: 'read' },
-    muktType: { type: String, enum: ['ambrish', 'american', 'angat', 'cricket', 'general', 'karyakarta', 'kid', 'married', 'nisthawaan', 'sahishnu',
-                'sahradayi', 'samanvay', 'sampark', 'sat. sabha', 'single', 'sundaysabha','vip', 'vvip', 'youth'], required: false },
+    muktType: [{ type: String, enum: ['ambrish', 'american', 'angat', 'cricket', 'general', 'karyakarta', 'kid', 'married', 'nisthawaan', 'sahishnu',
+                'sahradayi', 'samanvay', 'sampark', 'sat. sabha', 'single', 'sundaysabha','vip', 'vvip', 'youth'], required: false, default: 'general' }],
     userGroups: {
         type: [{ type: String, ref: 'userGroup' }],
         default: []
@@ -92,8 +92,8 @@ var UserSchema = new Schema({
     updatedAt: { type: Date, default: null }
 });
 
-UserSchema.index({ 'userID': 1 }, { unique: true });
-UserSchema.index({ 'email': 1 }, { unique: true });
+UserSchema.index({ 'oldid': 1 }, { unique: true });
+//UserSchema.index({ 'email': 1 }, { unique: true });
 UserSchema.set('validateBeforeSave', true);
 var Users = mongoose.model('User', UserSchema);
 
