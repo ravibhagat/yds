@@ -60,7 +60,7 @@ var UserSchema = new Schema({
         type: [{ type: String, ref: 'Role' }],
         default: []
     },
-    myZone: { type: String, ref: 'Zones' },
+    myZone: { type: Schema.ObjectId, ref: 'Zones' },
     userZones: {
         type: [{ type: String, ref: 'Zones' }],
         default: []

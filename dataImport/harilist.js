@@ -1,5 +1,7 @@
 var Users = require('../models/userSchema.js').Users;
+var Zones = require('../models/userSchema.js').Zones;
 var mysql = require('mysql');
+var mongoose = require('mongoose');
 var env = process.env.NODE_ENV || 'development';
 var configs = require("../config/config." + env);
 var Promise = require('bluebird');
@@ -57,6 +59,8 @@ var userImport = function() {
         }).then(function(data){
             console.log('Total Records: ' + data.length);
             return getRelationalData(data);
+        }).then(function(data){
+            return getZone(data);
         }).then(function(data){
             return dataInsert(data);
         }).then(function(data){
@@ -124,6 +128,49 @@ var updateMuktaType = function(row){
             }else{
                 resolve([{"MUKTTYPE":'general'}]);
             };
+        });
+    });
+}
+
+var getZone = function(data){
+    var myPromise= [];
+    data.forEach(function(row){
+        console.log(row.oldid);
+        myPromise[myPromise.length] = updateZone(row);
+    });
+    return Promise.all(myPromise).then(function(values){
+        data.forEach(function(row, index1){
+            if(values[index1]){
+                row.myZone =  mongoose.Types.ObjectId(values[index1].toString());
+            }
+        });
+        return data;
+    });
+}
+var updateZone = function(row){
+    return new Promise(function(resolve, reject) {
+        Zones.find({})
+        .then(function(result){
+            var obj = {};
+            for( var key in result){
+               obj[result[key].name] = result[key]._id
+            }
+            return obj;
+        }).then(function(obj){
+            var query ='select t1.Z_ID, t2.Z_Name from haribhakt_zone as t1 left join zone as t2 on t1.Z_ID=t2.Z_ID where t1.Harilist_Id ='+ row.oldid;
+            mysqlDb.query(query , function(err, res, fields) {
+                if (err) {
+                    reject(err);
+                }
+                if(res.length > 0)
+                {
+                    resolve(obj[res[0].Z_Name]);
+                }else{
+                    resolve('');
+                };
+            });
+        }).catch(function(err){
+            console.log(err);
         });
     });
 }
